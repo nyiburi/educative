@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form Processor</title>
+	<style>
+body {
+      margin-left: 24px;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    label {
+      display: inline-block;
+      width: 80px;
+      margin-top: 4px;
+      margin-bottom: 4px; 
+    }
+
+
+  /*  thead, tfoot, tbody {
+  display: block;
+}*/
+
+/*tbody { 
+  height: 280px;
+  overflow-y: scroll;
+}*/
+	</style>
+</head>
+<body>
+	<h1>Data form</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Property</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<br>
+	<a href="rendering.html" id="back">Back to the caller</a>
+
+	<script src="js/jquery.min.js"></script>
+<Script>
+	
+	$(function () {
+      var params = getFormParameters();
+      for (var parName in params) {
+        var row = $("<tr>")
+          .append($("<td>").html(parName))
+          .append($("<td>").html(params[parName]));
+        $("tbody").append(row);
+      }
+    });
+    
+    function getFormParameters() {
+      var uri = window.location.search;
+      var result = {}; 
+      if (uri.indexOf("?") === -1) {
+        return {};
+      }
+      var query = uri.slice(1);
+      var params = query.split("&");
+      var i = 0;
+      while (i < params.length) {
+        var parameter = params[i].split("=");
+        result[parameter[0]] = parameter[1]; 
+        i++;
+      }
+      return result;
+    }
+
+// 	$(function () {
+//   var sum = 0;
+//   for (var i = 0; i < 100; i++) {
+//     var a = Math.floor(100 * Math.random());
+//     var b = Math.floor(100 * Math.random());
+//     var row = $("<tr>")
+//       .append($("<td>").html(a + " + " + b + " ="))
+//       .append($("<td>").html(a + b));
+//     sum += a + b;
+//     $("tbody").append(row);
+//   }
+//   var sumRow = $("<tr>")
+//     .append($("<td>").html("Sum:")) 
+//     .append($("<td>").html(sum));
+//   $("tfoot").append(sumRow);
+// }); 
+</Script>
+</body>
+</html>

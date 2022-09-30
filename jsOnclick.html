@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"content="width=device-width, initial-scale=1.0">
+		<title>External CSS</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<h1 onclick="handleMe(this)">Introduction</h1>
+		<h2>Whom this course is for?</h2>
+		<h2>Erata</h2>
+		
+		<h1 onclick="handleMe(this)">Chapter One</h1>
+		<h2>What you will learn in this chapter!</h2>
+		<h2>Summary</h2>
+		<h1 onclick="handleMe(this)">Chapter Two</h1>
+		<h2>Recap</h2>
+		<h2>Conclusion</h2>
+
+	<script>
+		function handleMe(node){
+			let value = node.getAttribute('class')||'';
+			value = value == ''?'clicked':'';
+			node.setAttribute('class', value);
+		}
+	</script>
+	</body>
+</html>
